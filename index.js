@@ -6,6 +6,13 @@ var bodyParser = require("body-parser");   //bodyParser is in fact the compositi
 var chalk = require('chalk');
 var morgan = require('morgan');
 //var cors = require('cors');
+if(process.env.PORT){
+process.env.PORT = process.env.PORT;
+process.env.NODE_ENV = "production";
+}else{
+process.env.PORT = 7000;
+process.env.NODE_ENV = "production";
+}
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -36,7 +43,7 @@ var router = express.Router();
 require("./routes")(app, router);
 
 //listening server 
-server.listen(7000, function() {
+server.listen(process.env.PORT, function() {
     console.log(chalk.bgBlue("Alcon server is running  at http://" + server.address().address + ":" + server.address().port + ' in ') + chalk.bgGreen(process.env.NODE_ENV + ' Mode.'));
 });
 
