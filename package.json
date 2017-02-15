@@ -2,9 +2,9 @@
   "name": "alcon-backend",
   "version": "1.0.0",
   "description": "we are creating module to send simple email",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./index.js"
   },
   "author": "Ajit Kumar",
   "license": "ISC",
