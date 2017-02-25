@@ -1,5 +1,5 @@
 var path = require('path');
-var handler = require("./lib")
+var handler = require("./lib");
 
 module.exports = function(app, router) {
     app.route('/').get(function(req, res) {
@@ -7,26 +7,25 @@ module.exports = function(app, router) {
     });
 
     app.use('/api/', router);
-
+    console.log("roter", config)
     /////////////////////Route to check loggedIn and to verify JWT///////////////////////////////////////
 
     router.use(function(req, res, next) {
-        // check header or url parameters or post parameters for token
-        var token = req.body.access_token || req.query.access_token || req.headers['access_token'] || "http://acrentalservice.com/";
-        // decode token
-        if (token) {
-                    return next();
+        // Authenticate requested REST api 
+        console.log("Let us verify you", "Requested : ", req.headers['origin'], "Needed : ", config.host);
+        if (req.headers['origin'] == config.host) {
+            return next();
         } else {
-            // if there is no token
+            // if authentication failed
             return res.send({
                 authentication: false,
-                message: 'Auth failed'
+                message: 'Opss! something went wrong we apologies for inconvience'
             });
 
         }
     });
     ////////////////////////////////////////////////////////////////////////////////////////////////////////  
 
-    app.post('/sendmail', handler.sendmail);
+    router.post('/sendQuery', handler.sendmail);
 
 }

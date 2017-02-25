@@ -1,0 +1,14 @@
+{ 
+    "development": {
+      "host": "http://localhost:8080",
+      "port": 7000,
+      "id" : "alconengineers1@gmail.com",
+      "code" : "69426942"
+    },
+    "production": {
+      "host": "http://acrentalservice.com",
+      "port": 7000,
+      "id" : "alconengineers1@gmail.com",
+      "code" : "69426942"
+    }
+}

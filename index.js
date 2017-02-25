@@ -5,14 +5,13 @@ var server = require("http").createServer(app);
 var bodyParser = require("body-parser");   //bodyParser is in fact the composition of three middlewares like json, urlencoded and multipart
 var chalk = require('chalk');
 var morgan = require('morgan');
+var config_mode = require('config');
 //var cors = require('cors');
-if(process.env.PORT){
-process.env.PORT = process.env.PORT;
-process.env.NODE_ENV = "production";
-}else{
-process.env.PORT = 7000;
-process.env.NODE_ENV = "production";
-}
+
+//Set ENV and get app settings
+process.env.NODE_ENV = process.env.NODE_ENV || app.get('env')
+global.config = config_mode.get(process.env.NODE_ENV);
+process.env.PORT = config.port;
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');

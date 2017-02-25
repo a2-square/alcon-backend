@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     nodemon = require('gulp-nodemon');
 gulp.task('watch-server', function() {
     nodemon({
-            script: 'server.js',
+            script: 'index.js',
         }) 
         .on('restart', function() {
             console.log(chalk.bgBlue('Alcon-Backend Server Restarted!'));
