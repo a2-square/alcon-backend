@@ -4,7 +4,9 @@
   "description": "we are creating module to send simple email",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Ajit Kumar",
   "license": "ISC",
@@ -21,6 +23,8 @@
     "mongoose": "^4.5.2",
     "morgan": "^1.7.0",
     "nodemailer": "^3.1.0",
-    "nodemailer-smtp-transport": "^2.7.2"
-  }
+    "nodemailer-smtp-transport": "^2.7.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
